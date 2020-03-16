@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent],
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
             enabled: environment.production
         }),
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        StoreModule.forRoot({}, {})
     ],
     providers: [],
     bootstrap: [AppComponent]
