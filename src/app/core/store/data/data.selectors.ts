@@ -1,7 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { DATA_FEATURE_KEY, IDataState } from './data.reducer';
+import { DATA_FEATURE_KEY, IVirusDataState } from './data.reducer';
 
-const dataState = createFeatureSelector<IDataState>(DATA_FEATURE_KEY);
+const dataState = createFeatureSelector<IVirusDataState>(DATA_FEATURE_KEY);
 
-export const getAllData = createSelector(dataState, (state: IDataState) => state.virusData);
+export const getResponse = createSelector(dataState, (state: IVirusDataState) => state.apiResponse);
+export const getStatistics = createSelector(dataState, (state: IVirusDataState) => state.statistics);

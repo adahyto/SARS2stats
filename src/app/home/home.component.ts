@@ -14,5 +14,4 @@ export class HomeComponent extends HomeContainer implements OnInit {
     ngOnInit(): void {
         this.dataFacade.fetchData();
     }
-
 }

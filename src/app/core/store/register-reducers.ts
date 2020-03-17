@@ -1,9 +1,9 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import { dataReducer, IDataState } from './data/data.reducer';
+import { dataReducer, IVirusDataState } from './data/data.reducer';
 
 export interface AppState {
-    data: IDataState;
+    data: IVirusDataState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
