@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { IApiResponse } from '../models/data';
+import { IApiResponse, IRecord } from '../models/data';
 import { allCountriesStats } from './api.endpoints';
 
 @Injectable({
@@ -13,7 +13,7 @@ import { allCountriesStats } from './api.endpoints';
 export class DataService {
     constructor(private http: HttpClient) {}
 
-    getAllCountriesStats(): Observable<IApiResponse> {
+    getAllCountriesData(): Observable<IApiResponse> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'x-rapidapi-host': environment.xRapidApiHost,
@@ -32,4 +32,5 @@ export class DataService {
             : (errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`);
         return throwError(errorMessage);
     }
+
 }
