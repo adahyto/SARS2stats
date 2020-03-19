@@ -7,7 +7,7 @@ export interface IApiResponse {
 
 export interface IData {
     lastChecked: string;
-    COVID19Stats: IRecord[];
+    covid19Stats: IRecord[];
 }
 
 export interface IRecord {
@@ -22,6 +22,7 @@ export interface IRecord {
 }
 
 export interface IStatistics {
+    lastUpdated?: string;
     worldStats: IRecord;
     byRegion: IRecord[];
 }

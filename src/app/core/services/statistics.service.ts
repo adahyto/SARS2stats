@@ -12,10 +12,12 @@ export class StatisticsService {
     setStats(data: IData): IStatistics {
         return data
             ? {
-                  byRegion: data.COVID19Stats,
-                  worldStats: this.worldStats(data.COVID19Stats)
+                  lastUpdated: data.lastChecked,
+                  byRegion: data.covid19Stats,
+                  worldStats: this.worldStats(data.covid19Stats)
               }
             : {
+                  lastUpdated: 'no data',
                   byRegion: [],
                   worldStats: null
               };
