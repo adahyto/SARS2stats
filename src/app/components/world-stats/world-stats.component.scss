@@ -1,0 +1,16 @@
+@import '../../app.component.scss';
+
+.world-stats {
+    text-align: center;
+    &_subtitle {
+        font-size: 14px;
+    }
+    &_holder {
+        @include flex-row;
+
+        span {
+            @include flex-col;
+            flex: 1;
+        }
+    }
+}

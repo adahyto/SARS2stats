@@ -1,5 +1,18 @@
-<mat-card>
-    <i>{{ worldStats.confirmed }}</i>
-    <i>{{ worldStats.deaths }}</i>
-    <i>{{ worldStats.recovered }}</i>
+<mat-card class="world-stats">
+    <h2>Worldwide</h2>
+    <i class="world-stats_subtitle">last update: {{ lastUpdated }}</i>
+    <section class="world-stats_holder">
+        <span>
+            <h6>CONFIRMED</h6>
+            <i>{{ worldStats.confirmed }}</i>
+        </span>
+        <span>
+            <h6>DEATHS</h6>
+            <i>{{ worldStats.deaths }}</i>
+        </span>
+        <span>
+            <h6>RECOVERED</h6>
+            <i>{{ worldStats.recovered }}</i>
+        </span>
+    </section>
 </mat-card>

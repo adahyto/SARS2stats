@@ -11,15 +11,20 @@ export interface IData {
 }
 
 export interface IRecord {
-    province?: string;
     country: string;
-    lastUpdate?: string;
+    province?: string;
     confirmed: number;
     deaths: number;
     recovered: number;
-    flag?: string;
-    locale?: any;
+    lastUpdate?: string;
 }
+
+// export interface IMapFeedRecord extends IRecord {
+//     localization: {
+//         lat: number;
+//         lon: number;
+//     };
+// }
 
 export interface IStatistics {
     lastUpdated?: string;
