@@ -7,6 +7,7 @@ import { HomeContainer } from './home.container';
     templateUrl: './home.component.html'
 })
 export class HomeComponent extends HomeContainer implements OnInit {
+    columnsToDisplay = ['country', 'province', 'confirmed', 'deaths', 'recovered'];
     constructor(injector: Injector) {
         super(injector);
     }

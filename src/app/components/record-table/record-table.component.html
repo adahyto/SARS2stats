@@ -1,0 +1,26 @@
+<mat-card *ngIf="records && dataSource">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+            <td mat-cell *matCellDef="let rec">{{ rec.country }}</td>
+        </ng-container>
+        <ng-container matColumnDef="province">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Province</th>
+            <td mat-cell *matCellDef="let rec">{{ rec.province }}</td>
+        </ng-container>
+        <ng-container matColumnDef="confirmed">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Confirmed</th>
+            <td mat-cell *matCellDef="let rec">{{ rec.confirmed }}</td>
+        </ng-container>
+        <ng-container matColumnDef="deaths">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Deaths</th>
+            <td mat-cell *matCellDef="let rec">{{ rec.deaths }}</td>
+        </ng-container>
+        <ng-container matColumnDef="recovered">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Recovered</th>
+            <td mat-cell *matCellDef="let rec">{{ rec.recovered }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+</mat-card>

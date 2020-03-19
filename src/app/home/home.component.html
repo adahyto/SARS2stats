@@ -1,1 +1,6 @@
-<h1>YO</h1>
+<app-world-stats *ngIf="statistics?.worldStats" [worldStats]="statistics.worldStats"></app-world-stats>
+<app-record-table
+    *ngIf="statistics?.byRegion"
+    [columnsToDisplay]="['country', 'province', 'confirmed', 'deaths', 'recovered']"
+    [records]="statistics.byRegion"
+></app-record-table>
