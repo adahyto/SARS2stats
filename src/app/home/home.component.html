@@ -1,4 +1,11 @@
 <app-world-stats *ngIf="statistics?.worldStats" [worldStats]="statistics.worldStats"></app-world-stats>
+
+<app-record-table
+    *ngIf="statistics?.byCountry"
+    [columnsToDisplay]="['country', 'confirmed', 'deaths', 'recovered']"
+    [records]="statistics.byCountry"
+></app-record-table>
+
 <app-record-table
     *ngIf="statistics?.byRegion"
     [columnsToDisplay]="['country', 'province', 'confirmed', 'deaths', 'recovered']"

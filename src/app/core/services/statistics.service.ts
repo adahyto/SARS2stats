@@ -14,12 +14,14 @@ export class StatisticsService {
             ? {
                   lastUpdated: data.lastChecked,
                   byRegion: data.covid19Stats,
-                  worldStats: this.worldStats(data.covid19Stats)
+                  worldStats: this.worldStats(data.covid19Stats),
+                  byCountry: this.statsByCountry(data.covid19Stats)
               }
             : {
                   lastUpdated: 'no data',
                   byRegion: [],
-                  worldStats: null
+                  worldStats: null,
+                  byCountry: []
               };
     }
 
@@ -38,5 +40,32 @@ export class StatisticsService {
             }
         }
         return worldStats;
+    }
+
+    statsByCountry(records: IRecord[]) {
+        let byCountry: IRecord[] = [];
+        records.forEach(rec => {
+            const ifExists: IRecord[] = byCountry.filter(countryRec => countryRec.country === rec.country);
+            if (!ifExists[0]) {
+                byCountry.push({
+                    country: rec.country,
+                    confirmed: rec.confirmed,
+                    deaths: rec.deaths,
+                    recovered: rec.recovered
+                });
+            } else {
+                byCountry = byCountry.map((datum: IRecord) =>
+                    datum.country === ifExists[0].country
+                        ? {
+                              country: ifExists[0].country,
+                              confirmed: ifExists[0].confirmed + rec.confirmed,
+                              deaths: ifExists[0].deaths + rec.deaths,
+                              recovered: ifExists[0].deaths + rec.recovered
+                          }
+                        : datum
+                );
+            }
+        });
+        return byCountry;
     }
 }

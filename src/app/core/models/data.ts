@@ -25,5 +25,5 @@ export interface IStatistics {
     lastUpdated?: string;
     worldStats: IRecord;
     byRegion: IRecord[];
+    byCountry: IRecord[];
 }
-
