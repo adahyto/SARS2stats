@@ -11,14 +11,14 @@
     <app-record-table
         *ngIf="statistics?.byCountry"
         title="by country"
-        [columnsToDisplay]="['country', 'confirmed', 'deaths', 'recovered']"
+        [columnsToDisplay]="['country', 'confirmed', 'deaths', 'recovered', 'updated']"
         [records]="statistics.byCountry"
     ></app-record-table>
     <mat-divider class="divider"></mat-divider>
     <app-record-table
         *ngIf="statistics?.byRegion"
         title="by region"
-        [columnsToDisplay]="['country', 'province', 'confirmed', 'deaths', 'recovered']"
+        [columnsToDisplay]="['country', 'province', 'confirmed', 'deaths', 'recovered', 'updated']"
         [records]="statistics.byRegion"
     ></app-record-table>
     <mat-divider class="divider"></mat-divider>

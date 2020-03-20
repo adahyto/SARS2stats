@@ -1,4 +1,10 @@
+@import '../../app.component.scss';
+
 .record-table {
+    &_container {
+        @include flex-col;
+        align-items: center;
+    }
     &_title {
         text-align: center;
     }

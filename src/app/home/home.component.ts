@@ -8,7 +8,6 @@ import { HomeContainer } from './home.container';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends HomeContainer implements OnInit {
-    columnsToDisplay = ['country', 'province', 'confirmed', 'deaths', 'recovered'];
     constructor(injector: Injector) {
         super(injector);
     }

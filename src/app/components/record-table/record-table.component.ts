@@ -28,4 +28,9 @@ export class RecordTableComponent implements AfterViewInit {
             this.loaded = true;
         }, 1000);
     }
+
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { IRecord } from '../models/data';
-import { IData, IStatistics } from './../models/data';
+import { IData, IRecord, IStatistics } from './../models/data';
 
 @Injectable({
     providedIn: 'root'
@@ -10,10 +9,11 @@ export class StatisticsService {
     constructor() {}
 
     setStats(data: IData): IStatistics {
+        this.byRegion(data.covid19Stats);
         return data
             ? {
                   lastUpdated: data.lastChecked,
-                  byRegion: data.covid19Stats,
+                  byRegion: this.byRegion(data.covid19Stats),
                   worldStats: this.worldStats(data.covid19Stats),
                   byCountry: this.statsByCountry(data.covid19Stats)
               }
@@ -25,12 +25,17 @@ export class StatisticsService {
               };
     }
 
+    byRegion(records: IRecord[]): IRecord[] {
+        return records.map(rec => this.newRec(rec));
+    }
+
     worldStats(records: IRecord[]): IRecord {
         const worldStats: IRecord = {
             country: 'all',
             confirmed: 0,
             deaths: 0,
-            recovered: 0
+            recovered: 0,
+            lastUpdate: ''
         };
         for (const key in records) {
             if (records.hasOwnProperty(key)) {
@@ -47,25 +52,33 @@ export class StatisticsService {
         records.forEach(rec => {
             const ifExists: IRecord[] = byCountry.filter(countryRec => countryRec.country === rec.country);
             if (!ifExists[0]) {
-                byCountry.push({
-                    country: rec.country,
-                    confirmed: rec.confirmed,
-                    deaths: rec.deaths,
-                    recovered: rec.recovered
-                });
+                byCountry.push(this.newRec(rec));
             } else {
                 byCountry = byCountry.map((datum: IRecord) =>
-                    datum.country === ifExists[0].country
-                        ? {
-                              country: ifExists[0].country,
-                              confirmed: ifExists[0].confirmed + rec.confirmed,
-                              deaths: ifExists[0].deaths + rec.deaths,
-                              recovered: ifExists[0].deaths + rec.recovered
-                          }
-                        : datum
+                    datum.country === ifExists[0].country ? this.bindRec(ifExists[0], rec) : datum
                 );
             }
         });
         return byCountry;
+    }
+
+    newRec(rec: IRecord): IRecord {
+        return {
+            country: rec.country,
+            confirmed: rec.confirmed,
+            deaths: rec.deaths,
+            recovered: rec.recovered,
+            lastUpdate: rec.lastUpdate.replace('T', ' ')
+        };
+    }
+
+    bindRec(old: IRecord, toAdd: IRecord): IRecord {
+        return {
+            country: old.country,
+            confirmed: old.confirmed + toAdd.confirmed,
+            deaths: old.deaths + toAdd.deaths,
+            recovered: old.deaths + toAdd.recovered,
+            lastUpdate: old.lastUpdate
+        };
     }
 }
