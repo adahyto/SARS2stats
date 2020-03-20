@@ -19,13 +19,6 @@ export interface IRecord {
     lastUpdate?: string;
 }
 
-// export interface IMapFeedRecord extends IRecord {
-//     localization: {
-//         lat: number;
-//         lon: number;
-//     };
-// }
-
 export interface IStatistics {
     lastUpdated?: string;
     worldStats: IRecord;
