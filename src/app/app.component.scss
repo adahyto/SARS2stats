@@ -1,9 +1,13 @@
+.divider {
+    height: 25px;
+}
+
 @mixin flex-row {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 @mixin flex-col {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }

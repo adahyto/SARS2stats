@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
@@ -15,9 +16,10 @@ import { RecordTableComponent } from './components/record-table/record-table.com
 import { WorldStatsComponent } from './components/world-stats/world-stats.component';
 import { CreateStoreModule } from './core/store/create-store.module';
 import { HomeComponent } from './home/home.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, WorldStatsComponent, RecordTableComponent],
+    declarations: [AppComponent, HomeComponent, InfoComponent, WorldStatsComponent, RecordTableComponent],
     imports: [
         BrowserModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
@@ -26,6 +28,7 @@ import { HomeComponent } from './home/home.component';
         BrowserAnimationsModule,
         HttpClientModule,
         CreateStoreModule,
+        MatDividerModule,
         MatCardModule,
         MatTableModule,
         MatSortModule,
