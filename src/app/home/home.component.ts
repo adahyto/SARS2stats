@@ -14,5 +14,8 @@ export class HomeComponent extends HomeContainer implements OnInit {
 
     ngOnInit(): void {
         this.dataFacade.fetchData();
+        setInterval(() => {
+            this.dataFacade.fetchData();
+        }, 600000); // 10min
     }
 }
