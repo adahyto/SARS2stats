@@ -12,7 +12,7 @@ export class StatisticsService {
         this.byRegion(data.covid19Stats);
         return data
             ? {
-                  lastUpdated: data.lastChecked,
+                  lastUpdated: data.lastChecked.replace('T', ' '),
                   byRegion: this.byRegion(data.covid19Stats),
                   worldStats: this.worldStats(data.covid19Stats),
                   byCountry: this.statsByCountry(data.covid19Stats)
@@ -26,7 +26,7 @@ export class StatisticsService {
     }
 
     byRegion(records: IRecord[]): IRecord[] {
-        return records.map(rec => this.newRec(rec));
+        return records.map(rec => this.newRec(rec, true));
     }
 
     worldStats(records: IRecord[]): IRecord {
@@ -62,14 +62,23 @@ export class StatisticsService {
         return byCountry;
     }
 
-    newRec(rec: IRecord): IRecord {
-        return {
-            country: rec.country,
-            confirmed: rec.confirmed,
-            deaths: rec.deaths,
-            recovered: rec.recovered,
-            lastUpdate: rec.lastUpdate.replace('T', ' ')
-        };
+    newRec(rec: IRecord, province = false): IRecord {
+        return province
+            ? {
+                  country: rec.country,
+                  province: rec.province,
+                  confirmed: rec.confirmed,
+                  deaths: rec.deaths,
+                  recovered: rec.recovered,
+                  lastUpdate: rec.lastUpdate.replace('T', ' ')
+              }
+            : {
+                  country: rec.country,
+                  confirmed: rec.confirmed,
+                  deaths: rec.deaths,
+                  recovered: rec.recovered,
+                  lastUpdate: rec.lastUpdate.replace('T', ' ')
+              };
     }
 
     bindRec(old: IRecord, toAdd: IRecord): IRecord {
