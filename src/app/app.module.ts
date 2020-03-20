@@ -1,6 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +28,9 @@ import { HomeComponent } from './home/home.component';
         CreateStoreModule,
         MatCardModule,
         MatTableModule,
-        MatSortModule
+        MatSortModule,
+        MatPaginatorModule,
+        MatProgressSpinnerModule
     ],
     bootstrap: [AppComponent]
 })
