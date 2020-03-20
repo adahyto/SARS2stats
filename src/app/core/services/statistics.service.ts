@@ -12,7 +12,7 @@ export class StatisticsService {
         this.byRegion(data.covid19Stats);
         return data
             ? {
-                  lastUpdated: data.lastChecked.replace('T', ' '),
+                  lastUpdated: data.lastChecked.replace('T', ' ').split('.')[0],
                   byRegion: this.byRegion(data.covid19Stats),
                   worldStats: this.worldStats(data.covid19Stats),
                   byCountry: this.statsByCountry(data.covid19Stats)
