@@ -1,6 +1,10 @@
 @import '../app.component.scss';
 
-// .home_container {
-//     width: 80%;
-//     margin: 0 auto;
-// }
+.home_container {
+    width: 90%;
+    margin: 0 auto;
+
+    &_spinner {
+      margin: 0 auto;
+    }
+}

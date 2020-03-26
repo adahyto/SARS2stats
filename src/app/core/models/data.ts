@@ -12,7 +12,9 @@ export interface IData {
 
 export interface IRecord {
     country: string;
+    city?: string;
     province?: string;
+    keyId?: string;
     confirmed: number;
     deaths: number;
     recovered: number;
