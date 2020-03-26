@@ -2,12 +2,14 @@
     <mat-divider class="divider"></mat-divider>
     <app-info></app-info>
     <mat-divider class="divider"></mat-divider>
+    <mat-spinner *ngIf="!statistics?.worldStats" class="home_container_spinner"></mat-spinner>
     <app-world-stats
         *ngIf="statistics?.worldStats"
         [worldStats]="statistics.worldStats"
         [lastUpdated]="statistics.lastUpdated"
     ></app-world-stats>
     <mat-divider class="divider"></mat-divider>
+    <mat-spinner *ngIf="!statistics?.byCountry" class="home_container_spinner"></mat-spinner>
     <app-record-table
         *ngIf="statistics?.byCountry"
         title="by country"
@@ -15,10 +17,11 @@
         [records]="statistics.byCountry"
     ></app-record-table>
     <mat-divider class="divider"></mat-divider>
+    <mat-spinner *ngIf="!statistics?.byRegion" class="home_container_spinner"></mat-spinner>
     <app-record-table
         *ngIf="statistics?.byRegion"
         title="by region"
-        [columnsToDisplay]="['country', 'province', 'confirmed', 'deaths', 'recovered', 'updated']"
+        [columnsToDisplay]="['country', 'province', 'city', 'confirmed', 'deaths', 'recovered', 'updated']"
         [records]="statistics.byRegion"
     ></app-record-table>
     <mat-divider class="divider"></mat-divider>

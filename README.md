@@ -33,6 +33,9 @@
             "items": {
               "type": "object",
               "properties": {
+                "city": {
+                  "type": "string"
+                },
                 "province": {
                   "type": "string"
                 },
@@ -42,6 +45,9 @@
                 "lastUpdate": {
                   "type": "string",
                   "format": "style"
+                },
+                "keyId": {
+                  "type": "string"
                 },
                 "confirmed": {
                   "type": "integer"

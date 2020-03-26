@@ -66,6 +66,7 @@ export class StatisticsService {
         return province
             ? {
                   country: rec.country,
+                  city: rec.city,
                   province: rec.province,
                   confirmed: rec.confirmed,
                   deaths: rec.deaths,
