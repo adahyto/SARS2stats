@@ -4,6 +4,7 @@
     &_container {
         @include flex-col;
         align-items: center;
+        overflow-x: scroll;
     }
     &_title {
         text-align: center;
